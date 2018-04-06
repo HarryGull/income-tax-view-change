@@ -5,3 +5,5 @@ GET        /estimated-tax-liability/:nino/:year/:calcType             @controlle
 GET        /nino-lookup/:mtdRef                                       @controllers.IncomeSourceDetailsController.getNino(mtdRef)
 
 GET        /income-sources/:mtdRef                                    @controllers.IncomeSourceDetailsController.getIncomeSourceDetails(mtdRef)
+
+GET        /enterprise/obligation-data/nino/:nino/ITSA                @controllers.ReportDeadlinesController.getReportDeadlines(nino)
