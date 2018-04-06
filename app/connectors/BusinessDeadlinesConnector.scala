@@ -52,7 +52,7 @@ class BusinessDeadlinesConnector @Inject()(val http: HttpClient,
         response.status match {
           case OK =>
             Logger.debug(s"[BusinessDeadlinesConnector][getBusinessDeadlines] - RESPONSE status: ${response.status}, body: ${response.body}")
-            response.json.validate[ReportDeadlinesModel].fold(
+            response.json.validate[ReportDeadlinesModel](ReportDeadlinesModel.desReadsApi1330).fold(
               invalid => {
                 Logger.warn(s"[BusinessDeadlinesConnector][getBusinessDeadlines] - Json ValidationError. Parsing Business Deadlines Data")
                 Logger.debug(s"[BusinessDeadlinesConnector][getBusinessDeadlines] - Response possibly returned `None` for calcAmount: ${response.body}")
